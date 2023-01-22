@@ -59,15 +59,23 @@ function getMatchingCatsArray() {
 
     const matchingCatsArray = catsData.filter(function (cat) {
       if (isGif && hasDog) {
-        return cat.emotionTags.includes(selectedEmotion) && isGif && hasDog;
+        return (
+          (cat.emotionTags.includes(selectedEmotion) &&
+            cat.isGif &&
+            cat.hasDog) ||
+          (cat.emotionTags.includes(selectedEmotion) && cat.isGif)
+        );
       } else if (isGif) {
-        return cat.emotionTags.includes(selectedEmotion) && cat.isGif;
+        return (
+          cat.emotionTags.includes(selectedEmotion) && cat.isGif && !cat.hasDog
+        );
       } else if (hasDog) {
-        if (hasDog) {
-          return cat.emotionTags.includes(selectedEmotion) && cat.hasDog;
-        } else return cat.emotionTags.includes(selectedEmotion);
+        return (
+          (cat.emotionTags.includes(selectedEmotion) && cat.hasDog) ||
+          cat.emotionTags.includes(selectedEmotion)
+        );
       } else {
-        return cat.emotionTags.includes(selectedEmotion);
+        return cat.emotionTags.includes(selectedEmotion) && !cat.hasDog;
       }
     });
     return matchingCatsArray;

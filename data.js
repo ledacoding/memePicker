@@ -226,7 +226,7 @@ export const catsData = [
   {
     emotionTags: ["relaxed"],
     isGif: true,
-    image: "dog-relaxed.gif",
+    image: "dog-relaxed-gif.gif",
     alt: "A cat and a dog relaxing",
     hasDog: true,
   },
